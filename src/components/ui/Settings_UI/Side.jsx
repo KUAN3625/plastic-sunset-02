@@ -83,7 +83,11 @@ const SideMenu = () => {
 
 
           {/* 下半部 */}
-          <div className="px-6 mt-auto flex justify-end items-center">
+          <div className="px-6 mt-auto flex justify-between items-center">
+            {/* 左方大方塊預留 */}
+            <div className="w-16 h-16 rounded-xl bg-white/60 shadow-inner" />
+
+            {/* 右方兩顆圓形 */}
             <div className="flex gap-4">
               <button className="p-3 rounded-full bg-white/60 hover:bg-white/80 transition"
               onClick={() => handleNavigate("/setting", "setting")}>
