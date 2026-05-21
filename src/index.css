@@ -52,6 +52,31 @@ body {
   animation-play-state: paused;
 }
 
+/* 全域滾動條美化 */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.45) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 9999px;
+  transition: background 0.2s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* 滾動條隱藏 */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar {

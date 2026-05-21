@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Howl } from "howler";
 import { useAudioSettings } from "../../stoer/useAudioSettings";
+import { SkipBack, SkipForward, Play, Pause } from "lucide-react";
 
 const Musicbox = ({ songs = [] }) => {
   const { musicVolume } = useAudioSettings(); // 🎧 全域音量
@@ -105,42 +106,42 @@ const Musicbox = ({ songs = [] }) => {
 
         {/* 標題與演出者 */}
         <div style={{ fontFamily: "system-ui, sans-serif" }}
-        className="flex flex-col gap-2  min-w-0 mr-1">
-          <div className="text-black text-[0.9rem] font-black leading-none truncate">
+          className="flex flex-col gap-1 min-w-0 flex-1 mr-2">
+          <div className="text-black text-[0.85rem] font-black leading-none truncate">
             {currentSong?.title || "Unknown Title"}
           </div>
-          <div className="text-black/80 text-[0.6rem] font-medium leading-none truncate">
+          <div className="text-black/60 text-[0.6rem] font-medium leading-none truncate">
             {currentSong?.artist || "Unknown Artist"}
           </div>
         </div>
 
         {/* 控制鈕 */}
-        <div className="ml-auto flex items-center gap-2 shrink-0">
+        <div className="flex items-center gap-1.5 shrink-0">
           <button
             type="button"
             onClick={prevSong}
-            className="h-8 w-8 flex items-center justify-center rounded-md bg-black/5 hover:bg-black/10 active:bg-black/15 text-sm"
+            className="h-8 w-8 flex items-center justify-center rounded-md bg-black/5 hover:bg-black/10 active:bg-black/20 transition-colors"
             aria-label="上一首"
           >
-            ←
+            <SkipBack size={15} />
           </button>
 
           <button
             type="button"
             onClick={isPlaying ? pauseSong : playSong}
-            className="h-8 w-8 text flex items-center justify-center rounded-md bg-black/10 hover:bg-black/20 active:bg-black/30 font-semibold text-lg"
+            className="h-8 w-8 flex items-center justify-center rounded-md bg-black/10 hover:bg-black/20 active:bg-black/30 transition-colors"
             aria-label="播放/暫停"
           >
-            {isPlaying ? "❚❚" : "▶"}
+            {isPlaying ? <Pause size={15} /> : <Play size={15} />}
           </button>
 
           <button
             type="button"
             onClick={nextSong}
-            className="h-8 w-8 flex items-center justify-center rounded-md bg-black/5 hover:bg-black/10 active:bg-black/15 text-sm"
+            className="h-8 w-8 flex items-center justify-center rounded-md bg-black/5 hover:bg-black/10 active:bg-black/20 transition-colors"
             aria-label="下一首"
           >
-            →
+            <SkipForward size={15} />
           </button>
         </div>
       </div>

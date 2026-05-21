@@ -1,8 +1,8 @@
-import { useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { PerspectiveCamera } from '@react-three/drei'
 import useCameraStore from '../../stoer/usebr'
-import * as THREE from 'three'
+import { useEffectsStore } from '../../stoer/useEffectsStore'
 
 export const CameraWiggle = () => {
   const {
@@ -13,13 +13,13 @@ export const CameraWiggle = () => {
     far,
   } = useCameraStore()
 
+  const quality = useEffectsStore((s) => s.effectsQuality)
   const wiggleGroup = useRef()
 
-  // 👉 每幀讓 group.rotation 加一點 sin 抖動
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime()
-    const freq = 0.3 // 頻率
-    const amp = 0.004 // 幅度，越小越穩
+    const freq = 0.3
+    const amp = (quality / 100) * 0.004
 
     if (wiggleGroup.current) {
       wiggleGroup.current.rotation.x = Math.sin(t * freq * 1.2) * amp

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { X, GripHorizontal } from "lucide-react"
 
 export const Note = ({
   id,
@@ -58,39 +59,45 @@ export const Note = ({
 
   return (
     <div
-      className={`
-        relative w-[clamp(140px,20vw,220px)] h-[clamp(120px,18vw,200px)]
-        text-black text-[clamp(14px,1.5vw,18px)]
-        p-[clamp(8px,1vw,12px)] rounded-lg shadow-md select-none
-        ${isEditing ? "cursor-text" : "cursor-grab active:cursor-grabbing"}
-      `}
+      className="relative w-[clamp(140px,20vw,220px)] h-[clamp(120px,18vw,200px)] rounded-lg shadow-md select-none overflow-hidden"
       style={{
         backgroundColor: color,
         position: "absolute",
         left: `${x}px`,
         top: `${y}px`,
-        zIndex: z, // ⭐ 有效 z-index
+        zIndex: z,
       }}
-      onMouseDown={handleMouseDown}
     >
+      {/* 拖曳把手列 */}
+      <div
+        className={`flex items-center justify-between px-2 py-1 ${isEditing ? "cursor-default" : "cursor-grab active:cursor-grabbing"}`}
+        style={{ backgroundColor: "rgba(0,0,0,0.08)" }}
+        onMouseDown={handleMouseDown}
+      >
+        <GripHorizontal size={13} className="opacity-40" />
+        <button
+          onClick={onDelete}
+          className="p-0.5 rounded hover:bg-black/10 text-black/40 hover:text-red-500 transition-colors"
+        >
+          <X size={13} />
+        </button>
+      </div>
+
+      {/* 文字區 */}
       <textarea
         value={value}
         onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
         className={`
-          w-full h-full resize-none bg-transparent outline-none leading-snug break-words
+          w-full resize-none bg-transparent outline-none leading-snug break-words
+          text-black text-[clamp(13px,1.4vw,16px)]
+          px-[clamp(8px,1vw,12px)] py-[clamp(6px,0.8vw,10px)]
           ${isEditing ? "cursor-text" : "cursor-default"}
         `}
+        style={{ height: "calc(100% - 28px)" }}
         readOnly={!isEditing}
       />
-
-      <button
-        onClick={onDelete}
-        className="absolute top-2 right-2 text-lg text-red-500 hover:text-red-700"
-      >
-        ✕
-      </button>
     </div>
   )
 }

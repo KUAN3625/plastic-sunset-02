@@ -72,7 +72,7 @@ C: {
 
       {/* ------- 中螢幕（筆電 md，左右並排，不使用 absolute） ------- */}
 <div className="hidden md:flex lg:hidden w-full px-20 mt-4 justify-between items-start">
-  
+
   {/* 左邊按鈕列（小一點） */}
   <div className="px-20">
 
@@ -156,8 +156,8 @@ C: {
         {/* About 內容區 */}
          <div className="
     w-full max-w-[500px] font-mono
-    bg-white/85 backdrop-blur-sm border-[2px] border-black 
-    shadow-[3px_3px_0_#000] 
+    bg-white/85 backdrop-blur-sm border-[2px] border-black
+    shadow-[3px_3px_0_#000]
     p-6
     ">
     <div className="border-b-[2px] border-black pb-2 mb-4">
@@ -231,7 +231,7 @@ C: {
         {/* 右側 About 內容 */}
         <div
           className="
-          absolute 
+          absolute
           left-[58%]
           top-[36%]
           -translate-y-1/2
@@ -239,7 +239,7 @@ C: {
           max-w-[520px]
           h-[65vh]
           bg-white/85 backdrop-blur-sm
-          border-[2px] border-black 
+          border-[2px] border-black
           shadow-[3px_3px_0_#000]
           p-6
           overflow-hidden font-mono

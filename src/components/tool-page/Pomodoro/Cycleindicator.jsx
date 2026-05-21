@@ -6,16 +6,16 @@ export const PomodoroCycles = () => {
   const showDuring = ["focus", "rest", "paused", "done"]
   if (!showDuring.includes(status) || maxCycles <= 0) return null
 
-  // 🔥 計算目前正在第幾輪
-  const currentCycle = Math.min(cyclesDone + 1, maxCycles)
-
-return (
-  <div
-    className="absolute top-2 right-2 w-6 h-6 rounded-full 
-               flex items-center justify-center 
-               bg-black/10 text-black font-mono text-xs"
-  >
-    {currentCycle}
-  </div>
-)
+  return (
+    <div className="absolute top-2 right-2 flex items-center gap-1">
+      {Array.from({ length: maxCycles }, (_, i) => (
+        <div
+          key={i}
+          className={`w-1.5 h-1.5 rounded-full transition-colors duration-300 ${
+            i < cyclesDone ? "bg-black/70" : "bg-black/20"
+          }`}
+        />
+      ))}
+    </div>
+  )
 }
