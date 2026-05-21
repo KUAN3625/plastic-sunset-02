@@ -35,7 +35,7 @@ C: {
     <>
       Git Hub：
       <a
-        href="https://github.com/KUAN3625/Y2K-LO-FI"
+        href="https://github.com/KUAN3625/plastic-sunset-02"
         target="_blank"
         rel="noopener noreferrer"
         className="underline"
@@ -45,6 +45,19 @@ C: {
     </>
   ),
   text3: (
+    <>
+      第一版：
+      <a
+        href="https://github.com/KUAN3625/Y2K-LO-FI"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline"
+      >
+        Link
+      </a>
+    </>
+  ),
+  text4: (
     <>
       音樂來源：
       <a
