@@ -11,7 +11,7 @@ const ClockMode = ({ isHovering }) => {
     const { focus, rest } = usePomodoroSettings(); //滑稈
     const { status } = usePomodoroTimer();
     
-    const formatMinutes = (value) => String(value).padStart(2, "0");
+    const formatMinutes = (sec) => String(Math.floor(sec / 60)).padStart(2, "0");
     
     {/*--------下方為番茄鐘顯示邏輯----- */}
     const remainingSec = usePomodoroTimer((s) => s.remainingSec);

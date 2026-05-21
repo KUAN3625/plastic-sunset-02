@@ -14,9 +14,9 @@ const ControlPanelF = () => {
     <div className="flex flex-col items-end w-full px-1">
       <label className="w-full">
         <Slider
-          min={5}
-          max={60}
-          step={5}
+          min={10}
+          max={3600}
+          step={10}
           value={focus.time}
           onChange={(e) => setFocusTime(Number(e.target.value))}
           onStart={startDrag}

@@ -14,9 +14,9 @@ const ControlRestPanel = () => {
     <div className="flex flex-col items-end w-full px-1">
       <label className="w-full">
         <Slider
-          min={1}
-          max={15}
-          step={1}
+          min={5}
+          max={900}
+          step={5}
           value={rest.time}
           onChange={(e) => setRestTime(Number(e.target.value))}
           onStart={startDrag}

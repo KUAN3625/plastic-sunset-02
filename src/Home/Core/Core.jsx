@@ -51,6 +51,11 @@ const Core = () => {
     isHidden={isHidden}
     onToggle={() => setIsHidden(!isHidden)}
   />
+
+  {/* 右下角小字 */}
+  <div className="absolute bottom-2 right-3 text-white/30 text-[10px] select-none pointer-events-none">
+    *展場特供版
+  </div>
 </main>
 
 

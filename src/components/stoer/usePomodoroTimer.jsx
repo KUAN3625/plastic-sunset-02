@@ -3,7 +3,7 @@ import { usePomodoroSettings } from "./usePomodoroSettings";
 
 // 番茄鐘運作核心
 export const usePomodoroTimer = create((set, get) => {
-  const toSec = (m) => Math.max(1, Math.round(m * 60)); // 避免 0 → 00:00
+  const toSec = (s) => Math.max(1, Math.round(s)); // 值已是秒
 
   return {
     // 狀態

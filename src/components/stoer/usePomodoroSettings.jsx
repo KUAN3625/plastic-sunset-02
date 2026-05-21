@@ -4,12 +4,12 @@ import { create } from "zustand"
 
 export const usePomodoroSettings = create((set) => ({
     focus:{
-        time: 25,
+        time: 1500,   // 單位：秒（預設 25 分）
         isDragging: false,
     },
 
     rest:{
-        time: 5,
+        time: 300,    // 單位：秒（預設 5 分）
         isDragging: false,
     },
 
