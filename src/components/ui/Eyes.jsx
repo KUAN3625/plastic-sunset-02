@@ -4,7 +4,7 @@ import { useSFXStore } from "../stoer/useSFXStore";
 
 /**
  * 隱藏／顯示介面切換按鈕
- * 
+ *
  * Props:
  * - isHidden: Boolean → 當前 UI 是否隱藏
  * - onToggle: Function → 切換時執行的函式
@@ -13,18 +13,34 @@ const HideToggleButton = ({ isHidden, onToggle }) => {
   const play = useSFXStore((state) => state.play);
 
   return (
-    <button
-      onClick={() => {
-        onToggle();
-        play("ui.click");
-      }}
-      className="pointer-events-auto absolute bottom-3 right-20 z-50 p-2 rounded-full
-                 bg-white/30 backdrop-blur-md shadow-md
-                 hover:bg-white/50 transition"
-      title={isHidden ? "顯示介面" : "隱藏介面"}
-    >
-      {isHidden ? <Eye size={15} /> : <EyeOff size={15} />}
-    </button>
+    <>
+      {/* 隱藏時顯示跑馬燈 */}
+      {isHidden && (
+        <div className="pointer-events-none fixed top-0 left-0 w-full z-50 overflow-hidden
+                        bg-white/10 backdrop-blur-sm py-1">
+          <div className="flex whitespace-nowrap animate-marquee">
+            {Array.from({ length: 12 }).map((_, i) => (
+              <span key={i} className="text-white/60 text-xs font-mono tracking-widest mx-8">
+                請隨意使用
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <button
+        onClick={() => {
+          onToggle();
+          play("ui.click");
+        }}
+        className="pointer-events-auto absolute bottom-3 right-20 z-50 p-2 rounded-full
+                   bg-white/30 backdrop-blur-md shadow-md
+                   hover:bg-white/50 transition"
+        title={isHidden ? "顯示介面" : "隱藏介面"}
+      >
+        {isHidden ? <Eye size={15} /> : <EyeOff size={15} />}
+      </button>
+    </>
   );
 };
 
