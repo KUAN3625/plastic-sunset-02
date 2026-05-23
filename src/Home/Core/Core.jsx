@@ -12,6 +12,13 @@ import CassetteCarousel from "../../components/ui/Music/Music_CC/CassetteCarouse
 const Core = () => {
   const [isHidden, setIsHidden] = useState(false);
 
+  useEffect(() => {
+    if (!isHidden) return;
+    const show = () => setIsHidden(false);
+    window.addEventListener("mousemove", show, { once: true });
+    return () => window.removeEventListener("mousemove", show);
+  }, [isHidden]);
+
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
 
