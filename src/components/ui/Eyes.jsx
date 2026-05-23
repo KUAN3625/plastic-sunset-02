@@ -17,10 +17,10 @@ const HideToggleButton = ({ isHidden, onToggle }) => {
       {/* 隱藏時顯示跑馬燈 */}
       {isHidden && (
         <div className="pointer-events-none fixed top-0 left-0 w-full z-50 overflow-hidden
-                        bg-white/10 backdrop-blur-sm py-1">
+                        bg-white/20 backdrop-blur-sm py-2">
           <div className="flex whitespace-nowrap animate-marquee">
             {Array.from({ length: 12 }).map((_, i) => (
-              <span key={i} className="text-white/60 text-xs font-mono tracking-widest mx-8">
+              <span key={i} className="text-white/90 text-base font-mono tracking-widest mx-10">
                 請隨意使用
               </span>
             ))}

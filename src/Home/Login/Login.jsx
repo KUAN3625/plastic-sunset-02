@@ -29,7 +29,7 @@ const Login = () => {
       ">
 
         {/* 提示小字 */}
-        <p className="text-white/50 text-xs font-mono tracking-widest">請隨意使用</p>
+        <p className="text-white/80 text-sm font-mono tracking-widest">請隨意使用</p>
 
         {/* Google Login */}
         <Loginbtn
