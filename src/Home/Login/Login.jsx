@@ -28,6 +28,9 @@ const Login = () => {
         pt-[10vh]       /* ⭐ 讓按鈕浮到太陽上方 */
       ">
 
+        {/* 提示小字 */}
+        <p className="text-white/50 text-xs font-mono tracking-widest">請隨意使用</p>
+
         {/* Google Login */}
         <Loginbtn
           nametext="Google Login"
