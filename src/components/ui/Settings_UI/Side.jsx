@@ -79,6 +79,19 @@ const SideMenu = () => {
 </button>
 
             ))}
+            <a
+              href="https://kuan-room.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => close()}
+              className="text-left px-[clamp(1rem,3vw,2.25rem)]
+                         py-[clamp(0.75rem,2.5vh,2.5rem)]
+                         text-[clamp(1.5rem,4vw,2.75rem)]
+                         font-medium tracking-wide leading-snug
+                         text-gray-800 hover:bg-white/90 transition"
+            >
+              more
+            </a>
           </nav>
 
 
