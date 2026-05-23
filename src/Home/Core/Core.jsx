@@ -18,8 +18,12 @@ const Core = () => {
     const show = () => {
       timer = setTimeout(() => setIsHidden(false), 1500);
     };
-    window.addEventListener("mousemove", show, { once: true });
+    const skipFirst = () => {
+      window.addEventListener("mousemove", show, { once: true });
+    };
+    window.addEventListener("mousemove", skipFirst, { once: true });
     return () => {
+      window.removeEventListener("mousemove", skipFirst);
       window.removeEventListener("mousemove", show);
       clearTimeout(timer);
     };
