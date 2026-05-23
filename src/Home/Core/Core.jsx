@@ -14,9 +14,15 @@ const Core = () => {
 
   useEffect(() => {
     if (!isHidden) return;
-    const show = () => setIsHidden(false);
+    let timer;
+    const show = () => {
+      timer = setTimeout(() => setIsHidden(false), 1500);
+    };
     window.addEventListener("mousemove", show, { once: true });
-    return () => window.removeEventListener("mousemove", show);
+    return () => {
+      window.removeEventListener("mousemove", show);
+      clearTimeout(timer);
+    };
   }, [isHidden]);
 
   return (
