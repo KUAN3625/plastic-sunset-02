@@ -107,28 +107,14 @@ const Todolist = () => {
 
   return (
     <div
-      className="pointer-events-auto relative w-screen h-screen overflow-hidden"
-      onDragOver={(e) => e.preventDefault()}
-      onDrop={(e) => {
-        const data = e.dataTransfer.getData("note")
-        if (data) addNote(e.clientX - 100, e.clientY - 100)
+      className="pointer-events-auto relative w-screen h-screen overflow-hidden cursor-crosshair"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) addNote(e.clientX - 80, e.clientY - 30)
       }}
     >
       {/* 左上選單 */}
       <div className="absolute top-4 left-4">
         <SideMenu />
-      </div>
-
-      {/* 拖曳生成區 */}
-      <div
-        draggable="true"
-        onDragStart={(e) => e.dataTransfer.setData("note", "true")}
-        className="pointer-events-auto absolute left-0 top-0 w-[112px] h-full bg-white/60 hover:bg-white/80 transition-colors cursor-grab active:cursor-grabbing"
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-2 opacity-30 pointer-events-none select-none">
-          <StickyNote size={22} />
-          <span className="text-[9px] font-bold tracking-[0.25em] [writing-mode:vertical-rl]">DRAG TO ADD</span>
-        </div>
       </div>
 
       {/* 便條 */}
