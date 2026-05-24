@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useAudioSettings } from "../../components/stoer/useAudioSettings"
 import { useEffectsStore } from "../../components/stoer/useEffectsStore"
 import { useUIStore } from "../../components/stoer/ui/useUIStore"
+import { useSFXStore } from "../../components/stoer/useSFXStore"
 import { useNavigate } from "react-router-dom"
 
 const IDLE_MS = 30_000
@@ -12,6 +13,7 @@ const IDLE_MS = 30_000
 const Setting = () => {
   const { musicVolume, setMusicVolume } = useAudioSettings()
   const { effectsQuality, setEffectsQuality, pixelGranularity, setPixelGranularity } = useEffectsStore()
+  const { sfxVolume, setSfxVolume } = useSFXStore()
   const { setHidden } = useUIStore()
   const navigate = useNavigate()
   const timerRef = useRef(null)
@@ -33,7 +35,6 @@ const Setting = () => {
     }
   }, [])
 
-  const [sfx, setSfx] = useState(40)
   const [theme, setTheme] = useState("Lo-Fi")
 
   const themeOptions = ["Lo-Fi", "Y2K", "Mono"]
@@ -60,8 +61,8 @@ const Setting = () => {
     {
       id: "sfx",
       label: "SFX Volume",
-      value: sfx,
-      setValue: setSfx,
+      value: Math.round(sfxVolume * 100),
+      setValue: (v) => setSfxVolume(v / 100),
       min: 0,
       max: 100,
       step: 1,
