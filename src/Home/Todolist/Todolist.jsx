@@ -108,7 +108,7 @@ const Todolist = () => {
   return (
     <div
       className="pointer-events-auto relative w-screen h-screen overflow-hidden cursor-crosshair"
-      onClick={(e) => {
+      onDoubleClick={(e) => {
         if (e.target === e.currentTarget) addNote(e.clientX - 80, e.clientY - 30)
       }}
     >
