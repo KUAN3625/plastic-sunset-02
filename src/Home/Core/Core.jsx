@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import TimerPanel from "../../components/tool-page/Pomodoro/TimePanel"
 import SideMenu from "../../components/ui/Settings_UI/Side";
 import Musicbox from "../../components/tool-page/music/Musicplay"
@@ -6,17 +6,18 @@ import { useSFXStore } from "../../components/stoer/useSFXStore";
 import { songsdata } from "../../data/song";
 import HideToggleButton from "../../components/ui/Eyes";
 import CassetteCarousel from "../../components/ui/Music/Music_CC/CassetteCarousel";
+import { useUIStore } from "../../components/stoer/ui/useUIStore";
 
 
 
 const Core = () => {
-  const [isHidden, setIsHidden] = useState(false);
+  const { isHidden, setHidden, toggleHidden } = useUIStore();
 
   useEffect(() => {
     if (!isHidden) return;
     let timer;
     const show = () => {
-      timer = setTimeout(() => setIsHidden(false), 1500);
+      timer = setTimeout(() => setHidden(false), 1500);
     };
     const skipFirst = () => {
       window.addEventListener("mousemove", show, { once: true });
@@ -66,7 +67,7 @@ const Core = () => {
       {/* 右下角 Hide UI 按鈕 */}
       <HideToggleButton
         isHidden={isHidden}
-        onToggle={() => setIsHidden(!isHidden)}
+        onToggle={toggleHidden}
       />
 
       {/* 右下角小字 */}

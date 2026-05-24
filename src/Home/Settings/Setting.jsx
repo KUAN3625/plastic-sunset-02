@@ -1,13 +1,37 @@
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Slider from "../../components/ui/Settings/Slider"
 import SideMenu from "../../components/ui/Settings_UI/Side"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useAudioSettings } from "../../components/stoer/useAudioSettings"
 import { useEffectsStore } from "../../components/stoer/useEffectsStore"
+import { useUIStore } from "../../components/stoer/ui/useUIStore"
+import { useNavigate } from "react-router-dom"
+
+const IDLE_MS = 30_000
 
 const Setting = () => {
   const { musicVolume, setMusicVolume } = useAudioSettings()
   const { effectsQuality, setEffectsQuality, pixelGranularity, setPixelGranularity } = useEffectsStore()
+  const { setHidden } = useUIStore()
+  const navigate = useNavigate()
+  const timerRef = useRef(null)
+
+  useEffect(() => {
+    const reset = () => {
+      clearTimeout(timerRef.current)
+      timerRef.current = setTimeout(() => {
+        setHidden(true)
+        navigate("/core")
+      }, IDLE_MS)
+    }
+    const events = ["mousemove", "mousedown", "keydown", "scroll", "touchstart"]
+    events.forEach((e) => window.addEventListener(e, reset, { passive: true }))
+    reset()
+    return () => {
+      clearTimeout(timerRef.current)
+      events.forEach((e) => window.removeEventListener(e, reset))
+    }
+  }, [])
 
   const [sfx, setSfx] = useState(40)
   const [theme, setTheme] = useState("Lo-Fi")
